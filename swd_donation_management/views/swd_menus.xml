@@ -1,0 +1,25 @@
+<odoo>
+    <menuitem id="menu_swd_root" name="Social Welfare Department" sequence="10"/>
+
+    <menuitem id="menu_swd_dashboard" name="Dashboard" parent="menu_swd_root" sequence="10"/>
+    <menuitem id="menu_swd_dashboard_funds" name="Fund Dashboard" parent="menu_swd_dashboard" action="action_swd_dashboard_funds" sequence="10"/>
+    <menuitem id="menu_swd_dashboard_subsidy" name="Subsidy Dashboard" parent="menu_swd_dashboard" action="action_swd_dashboard_subsidy" sequence="20"/>
+
+    <menuitem id="menu_swd_patients" name="Patients" parent="menu_swd_root" sequence="20"/>
+    <menuitem id="menu_swd_patients_list" name="Patients" parent="menu_swd_patients" action="action_swd_patient" sequence="10"/>
+    <menuitem id="menu_swd_patient_categories" name="Categories" parent="menu_swd_patients" action="action_swd_patient_category" sequence="20"/>
+    <menuitem id="menu_swd_referrals" name="Referrals" parent="menu_swd_patients" action="action_swd_referral" sequence="30"/>
+
+    <menuitem id="menu_swd_funds" name="Funds" parent="menu_swd_root" sequence="30"/>
+    <menuitem id="menu_swd_fund_list" name="Funds" parent="menu_swd_funds" action="action_swd_fund" sequence="10"/>
+    <menuitem id="menu_swd_contributions" name="Contributions" parent="menu_swd_funds" action="action_swd_contribution" sequence="20"/>
+    <menuitem id="menu_swd_projects" name="Projects / Grants" parent="menu_swd_funds" action="action_swd_project" sequence="30"/>
+    <menuitem id="menu_swd_donors" name="Donors" parent="menu_swd_funds" action="action_swd_donor" sequence="40"/>
+
+    <menuitem id="menu_swd_subsidies" name="Subsidies" parent="menu_swd_root" sequence="40"/>
+    <menuitem id="menu_swd_subsidy_list" name="Subsidies" parent="menu_swd_subsidies" action="action_swd_subsidy" sequence="10"/>
+    <menuitem id="menu_swd_subcenters" name="Subcenters" parent="menu_swd_subsidies" action="action_swd_subcenter" sequence="20"/>
+    <menuitem id="menu_swd_monthly_report" name="Monthly Report" parent="menu_swd_subsidies" action="action_swd_subsidy_monthly" sequence="30"/>
+
+    <menuitem id="menu_swd_devices" name="Assistive Devices" parent="menu_swd_root" action="action_swd_device" sequence="50"/>
+</odoo>

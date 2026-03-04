@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_swd_fund,swd.fund,model_swd_fund,base.group_user,1,1,1,1
+access_swd_contribution,swd.contribution,model_swd_contribution,base.group_user,1,1,1,1
+access_swd_project,swd.project,model_swd_project,base.group_user,1,1,1,1
+access_swd_patient,swd.patient,model_swd_patient,base.group_user,1,1,1,1
+access_swd_patient_category,swd.patient.category,model_swd_patient_category,base.group_user,1,1,1,1
+access_swd_subsidy,swd.subsidy,model_swd_subsidy,base.group_user,1,1,1,1
+access_swd_subcenter,swd.subcenter,model_swd_subcenter,base.group_user,1,1,1,1
+access_swd_device,swd.device,model_swd_device,base.group_user,1,1,1,1
+access_swd_referral,swd.referral,model_swd_referral,base.group_user,1,1,1,1

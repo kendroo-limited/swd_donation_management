@@ -1,0 +1,21 @@
+{
+    "name": "SWD Donation Management",
+    "version": "17.0.1.0.0",
+    "summary": "Manage SWD socioeconomic assessment, subsidies, donors, and devices",
+    "category": "Social Welfare",
+    "author": "Custom",
+    "license": "LGPL-3",
+    "depends": ["base", "hr"],
+    "data": [
+        "data/swd_sequence.xml",
+        "security/ir.model.access.csv",
+        "views/swd_patient_views.xml",
+        "views/swd_fund_views.xml",
+        "views/swd_subsidy_views.xml",
+        "views/swd_device_views.xml",
+        "views/swd_referral_views.xml",
+        "views/swd_dashboard_views.xml",
+        "views/swd_menus.xml",
+    ],
+    "application": True,
+}

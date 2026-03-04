@@ -1,0 +1,62 @@
+<odoo>
+    <record id="view_swd_fund_graph" model="ir.ui.view">
+        <field name="name">swd.fund.graph</field>
+        <field name="model">swd.fund</field>
+        <field name="arch" type="xml">
+            <graph string="Fund Balance Overview" type="bar">
+                <field name="name"/>
+                <field name="balance" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_swd_fund_pivot" model="ir.ui.view">
+        <field name="name">swd.fund.pivot</field>
+        <field name="model">swd.fund</field>
+        <field name="arch" type="xml">
+            <pivot string="Fund Balance Overview">
+                <field name="balance" type="measure"/>
+                <field name="fund_type"/>
+                <field name="donor_id"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_swd_dashboard_funds" model="ir.actions.act_window">
+        <field name="name">Fund Dashboard</field>
+        <field name="res_model">swd.fund</field>
+        <field name="view_mode">graph,pivot,tree</field>
+    </record>
+
+    <record id="view_swd_subsidy_dashboard_graph" model="ir.ui.view">
+        <field name="name">swd.subsidy.dashboard.graph</field>
+        <field name="model">swd.subsidy</field>
+        <field name="arch" type="xml">
+            <graph string="Subsidy Allocation" type="bar">
+                <field name="category_id"/>
+                <field name="amount" type="measure"/>
+                <field name="department_id"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_swd_subsidy_dashboard_pivot" model="ir.ui.view">
+        <field name="name">swd.subsidy.dashboard.pivot</field>
+        <field name="model">swd.subsidy</field>
+        <field name="arch" type="xml">
+            <pivot string="Subsidy Allocation">
+                <field name="amount" type="measure"/>
+                <field name="category_id"/>
+                <field name="department_id"/>
+                <field name="subcenter_id"/>
+                <field name="state"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_swd_dashboard_subsidy" model="ir.actions.act_window">
+        <field name="name">Subsidy Dashboard</field>
+        <field name="res_model">swd.subsidy</field>
+        <field name="view_mode">graph,pivot,tree</field>
+    </record>
+</odoo>

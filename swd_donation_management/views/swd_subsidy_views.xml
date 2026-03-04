@@ -1,0 +1,159 @@
+<odoo>
+    <record id="view_swd_subcenter_tree" model="ir.ui.view">
+        <field name="name">swd.subcenter.tree</field>
+        <field name="model">swd.subcenter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="location"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_swd_subcenter_form" model="ir.ui.view">
+        <field name="name">swd.subcenter.form</field>
+        <field name="model">swd.subcenter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <field name="active" widget="boolean_toggle"/>
+                    </header>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Dhaka SWD Subcenter"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group >
+                        <field name="code"/>
+                    </group>
+                    <group>
+                        <field name="location"/>
+                    </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_swd_subcenter" model="ir.actions.act_window">
+        <field name="name">Subcenters</field>
+        <field name="res_model">swd.subcenter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_swd_subsidy_tree" model="ir.ui.view">
+        <field name="name">swd.subsidy.tree</field>
+        <field name="model">swd.subsidy</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="category_id"/>
+                <field name="patient_type"/>
+                <field name="case_type"/>
+                <field name="fund_id"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="state" widget="badge"
+                    decoration-muted="state == 'draft'"
+                    decoration-info="state == 'approved'"
+                    decoration-success="state == 'paid'"
+                    decoration-danger="state == 'cancelled'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_swd_subsidy_form" model="ir.ui.view">
+        <field name="name">swd.subsidy.form</field>
+        <field name="model">swd.subsidy</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" string="Approve" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_mark_paid" string="Mark Paid" type="object" class="oe_highlight" invisible="state != 'approved'"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" invisible="state == 'cancelled'"/>
+                    <button name="action_set_draft" string="Reset Draft" type="object" class="oe_highlight" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved,paid,cancelled"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Reference"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="category_id"/>
+                            <field name="patient_type" readonly="1"/>
+                            <field name="case_type"/>
+                            <field name="amount"/>
+                            <field name="has_required_reports"/>
+                        </group>
+                        <group>
+                            <field name="fund_id"/>
+                            <field name="project_id"/>
+                            <field name="department_id"/>
+                            <field name="subcenter_id"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Eligibility">
+                            <field name="eligibility_criteria" placeholder="Write eligibility criteria and supporting details..."/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" placeholder="Add internal notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_swd_subsidy_pivot" model="ir.ui.view">
+        <field name="name">swd.subsidy.pivot</field>
+        <field name="model">swd.subsidy</field>
+        <field name="arch" type="xml">
+            <pivot string="Monthly Subsidy Report">
+                <field name="amount" type="measure"/>
+                <field name="date" interval="month"/>
+                <field name="category_id"/>
+                <field name="department_id"/>
+                <field name="subcenter_id"/>
+                <field name="state"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_swd_subsidy_graph" model="ir.ui.view">
+        <field name="name">swd.subsidy.graph</field>
+        <field name="model">swd.subsidy</field>
+        <field name="arch" type="xml">
+            <graph string="Monthly Subsidy Report" type="bar">
+                <field name="date" interval="month"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_swd_subsidy" model="ir.actions.act_window">
+        <field name="name">Subsidies</field>
+        <field name="res_model">swd.subsidy</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_swd_subsidy_monthly" model="ir.actions.act_window">
+        <field name="name">Monthly Subsidy Report</field>
+        <field name="res_model">swd.subsidy</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{"group_by": ["date:month"]}</field>
+    </record>
+</odoo>

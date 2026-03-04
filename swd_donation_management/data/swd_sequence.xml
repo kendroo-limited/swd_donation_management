@@ -1,0 +1,8 @@
+<odoo>
+    <record id="seq_swd_subsidy" model="ir.sequence">
+        <field name="name">SWD Subsidy</field>
+        <field name="code">swd.subsidy</field>
+        <field name="prefix">SUB/</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>
